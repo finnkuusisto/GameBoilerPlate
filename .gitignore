@@ -1,0 +1,23 @@
+############
+# Compiled #
+############
+*.class
+
+#################
+# IDE Generated #
+#################
+.classpath
+.project
+.settings
+
+##################
+# Test Resources #
+##################
+res
+*.png
+*.txt
+
+########
+# Misc #
+########
+*~

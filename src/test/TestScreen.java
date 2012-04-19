@@ -59,6 +59,10 @@ public class TestScreen implements Screen {
 				this.sprites[i].update();
 			}
 		}
+		
+		if (Controller.isKeyDown(Controller.K_ESCAPE)) {
+			System.exit(0);
+		}
 	}
 	
 	@Override

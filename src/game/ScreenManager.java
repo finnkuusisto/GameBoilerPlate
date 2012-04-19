@@ -12,7 +12,7 @@ public class ScreenManager {
 		this.screenMap = new HashMap<String,Screen>();
 	}
 	
-	public void addScreen(Screen screen, String name) {
+	public void addScreen(String name, Screen screen) {
 		this.screenMap.put(name, screen);
 	}
 	

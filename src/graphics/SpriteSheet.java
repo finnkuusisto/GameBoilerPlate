@@ -41,7 +41,7 @@ public class SpriteSheet {
 	private static final String SPRITE_MARK = "[SPRITES]";
 	private static final String FRAME_MARK = "[FRAMES]";
 	private static final String LIST_SEP = ",";
-	private static final String BLOCK_SEP = "#";
+	private static final String BLOCK_SEP = "/";
 	
 	public static SpriteSheet loadSpriteSheet(String name) {
 		if (!name.startsWith("/")) {
@@ -75,7 +75,7 @@ public class SpriteSheet {
 		}
 		Map<String,SpriteData> ret = new HashMap<String,SpriteData>();
 		for (int i = begin; i < end; i++) {
-			//name#frames#durations
+			//name/frames/durations
 			String[] blocks = lines.get(i).split(SpriteSheet.BLOCK_SEP);
 			//first block is sprite name
 			String name = blocks[0];
@@ -101,13 +101,14 @@ public class SpriteSheet {
 		}
 		HashMap<String,SpriteFrame> ret = new HashMap<String,SpriteFrame>();
 		for (int i = begin; i < end; i++) {
-			//name,x,y,width,height
-			String[] parts = lines.get(i).split(SpriteSheet.LIST_SEP);
-			int x = Integer.parseInt(parts[1]);
-			int y = Integer.parseInt(parts[2]);
-			int w = Integer.parseInt(parts[3]);
-			int h = Integer.parseInt(parts[4]);
-			ret.put(parts[0], new SpriteFrame(x, y, w, h));
+			//name/x,y,width,height
+			String[] blocks = lines.get(i).split(SpriteSheet.BLOCK_SEP);
+			String[] parts = blocks[1].split(SpriteSheet.LIST_SEP);
+			int x = Integer.parseInt(parts[0]);
+			int y = Integer.parseInt(parts[1]);
+			int w = Integer.parseInt(parts[2]);
+			int h = Integer.parseInt(parts[3]);
+			ret.put(blocks[0], new SpriteFrame(x, y, w, h));
 		}
 		return ret;
 	}

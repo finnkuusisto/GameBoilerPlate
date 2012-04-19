@@ -1,4 +1,5 @@
 package graphics;
+
 import java.awt.Graphics;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
@@ -8,17 +9,39 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-public class ImageUtils {
-
+public class GraphicsUtils {
+	
+	private GraphicsUtils() {}
+	
+	public static void drawSprite(Graphics g, Sprite sprite, int dx, int dy) {
+		SpriteFrame frame = sprite.getFrame();
+		int w = frame.WIDTH;
+		int h = frame.HEIGHT;
+		GraphicsUtils.drawSprite(g, sprite, dx, dy, dx + w - 1, dy + h - 1);
+	}
+	
+	public static void drawSprite(Graphics g, Sprite sprite, int dx1, int dy1,
+			int dx2, int dy2) {
+		SpriteFrame frame = sprite.getFrame();
+		int x = frame.X;
+		int y = frame.Y;
+		int w = frame.WIDTH;
+		int h = frame.HEIGHT;
+		g.drawImage(sprite.getSheet(),
+					dx1, dy1, dx2, dy2,
+					x, y, x + w - 1, y + h - 1,
+					null);
+	}
+	
 	public static BufferedImage loadImage(String name) {
 		if (!name.startsWith("/")) {
 			name = "/" + name;
 		}
-		InputStream in = ImageUtils.class.getResourceAsStream(name);
+		InputStream in = GraphicsUtils.class.getResourceAsStream(name);
 		BufferedImage ret = null;
 		try {
 			BufferedImage tmp = ImageIO.read(in);
-			ret = ImageUtils.toCompatibleImage(tmp);
+			ret = GraphicsUtils.toCompatibleImage(tmp);
 		} catch (IOException e) {
 			System.err.println("Couldn't load " + name + "!");
 			e.printStackTrace();
@@ -28,7 +51,7 @@ public class ImageUtils {
 	
 	public static BufferedImage getSubImage(BufferedImage image, int x, int y,
 			int width, int height) {
-		BufferedImage newImage = ImageUtils.newCompatibleImage(width, height,
+		BufferedImage newImage = GraphicsUtils.newCompatibleImage(width, height,
 				image.getTransparency());
 		Graphics g = newImage.getGraphics();
 		g.drawImage(image, 0, 0, width - 1, height - 1, 

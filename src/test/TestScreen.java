@@ -7,6 +7,7 @@ import control.Controller;
 
 import game.Game;
 import game.Screen;
+import graphics.GraphicsUtils;
 import graphics.SpriteSheet;
 import graphics.Sprite;
 
@@ -59,12 +60,12 @@ public class TestScreen implements Screen {
 			}
 		}
 	}
-
+	
 	@Override
 	public void render(Graphics g) {
 		for (int i = 0; i < this.sprites.length; i++) {
-			g.drawImage(this.sprites[i].getImage(), this.spriteX[i],
-					this.spriteY[i], null);
+			GraphicsUtils.drawSprite(g, this.sprites[i], this.spriteX[i],
+					this.spriteY[i]);
 		}		
 	}
 

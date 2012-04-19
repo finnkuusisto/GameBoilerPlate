@@ -15,14 +15,14 @@ public class Sprite {
 	}
 	
 	public int numFrames() {
-		return this.DATA.IMAGES.length;
+		return this.DATA.FRAMES.length;
 	}
 	
 	public void update() {
 		this.countAtPosition++;
 		//check for image change
 		if (this.countAtPosition >= this.DATA.DURATIONS[position]) {
-			this.position = (this.position + 1) % this.DATA.IMAGES.length;
+			this.position = (this.position + 1) % this.DATA.FRAMES.length;
 			this.countAtPosition = 0;
 		}
 	}
@@ -32,8 +32,12 @@ public class Sprite {
 		this.countAtPosition = 0;
 	}
 	
-	public BufferedImage getImage() {
-		return this.DATA.IMAGES[this.position];
+	public BufferedImage getSheet() {
+		return this.DATA.SHEET;
+	}
+	
+	public SpriteFrame getFrame() {
+		return this.DATA.FRAMES[this.position];
 	}
 	
 }

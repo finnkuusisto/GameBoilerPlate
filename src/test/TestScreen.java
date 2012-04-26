@@ -20,13 +20,13 @@ public class TestScreen implements Screen {
 	public TestScreen() {
 		//init Sprites
 		Random rand = new Random();
-		SpriteSheet sprites = SpriteSheet.loadSpriteSheet("spritesheet.txt");
+		SpriteSheet sprites = SpriteSheet.loadSpriteSheet("testsheet.txt");
 		int numSprites = 1000;
 		this.sprites = new Sprite[numSprites];
 		this.spriteX = new int[numSprites];
 		this.spriteY = new int[numSprites];
 		for (int i = 0; i < this.sprites.length; i++) {
-			this.sprites[i] = sprites.getSprite("mySprite");
+			this.sprites[i] = sprites.getSprite("smile");
 			this.spriteX[i] = rand.nextInt(Game.WIDTH) + 1;
 			this.spriteY[i] = rand.nextInt(Game.HEIGHT) + 1;
 			int burnIn = rand.nextInt(this.sprites[i].numFrames());

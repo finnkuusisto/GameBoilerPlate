@@ -32,13 +32,13 @@ public class GameApplet extends Applet {
 		
 		private Game game;
 		
-		public GameRunner(Game context) {
-			this.game = context;
+		public GameRunner(Game game) {
+			this.game = game;
 		}
 
 		@Override
 		public void run() {
-			this.game.run();			
+			this.game.run();
 		}
 		
 	}

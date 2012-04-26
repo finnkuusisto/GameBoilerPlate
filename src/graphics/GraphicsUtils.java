@@ -17,7 +17,7 @@ public class GraphicsUtils {
 		SpriteFrame frame = sprite.getFrame();
 		int w = frame.WIDTH;
 		int h = frame.HEIGHT;
-		GraphicsUtils.drawSprite(g, sprite, dx, dy, dx + w - 1, dy + h - 1);
+		GraphicsUtils.drawSprite(g, sprite, dx, dy, dx + w, dy + h);
 	}
 	
 	public static void drawSprite(Graphics g, Sprite sprite, int dx1, int dy1,
@@ -29,7 +29,7 @@ public class GraphicsUtils {
 		int h = frame.HEIGHT;
 		g.drawImage(sprite.getSheet(),
 					dx1, dy1, dx2, dy2,
-					x, y, x + w - 1, y + h - 1,
+					x, y, x + w, y + h,
 					null);
 	}
 	

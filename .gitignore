@@ -1,6 +1,7 @@
 ############
 # Compiled #
 ############
+bin
 *.class
 
 #################
@@ -10,12 +11,11 @@
 .project
 .settings
 
-##################
-# Test Resources #
-##################
-res
-*.png
-*.txt
+##############################
+# Resources (not owned by me)#
+##############################
+spritesheet.png
+spritesheet.txt
 
 ########
 # Misc #

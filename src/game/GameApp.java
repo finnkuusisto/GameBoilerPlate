@@ -24,7 +24,7 @@ public class GameApp {
 				(screenSize.height / 2) - (Game.HEIGHT / 2));
 		//control
 		this.frame.addKeyListener(Controller.getListener());
-		//show the frame and create buffer strategy for the canvas
+		//show the frame
 		this.frame.setVisible(true);
 	}
 	

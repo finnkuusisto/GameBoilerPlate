@@ -30,6 +30,9 @@ public class GameApp {
 	
 	public void run() {
 		this.game.run();
+		//all done
+		this.frame.setVisible(false);
+		this.frame.dispose();
 	}
 	
 	public static void main(String[] args) {
